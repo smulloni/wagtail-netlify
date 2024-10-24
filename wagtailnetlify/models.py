@@ -6,9 +6,9 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 
 try:
+    from wagtail.signals import page_published
+except ImportError:  # Wagtail < 5.0
     from wagtail.wagtailcore.signals import page_published
-except ImportError:  # Wagtail < 2.0
-    from wagtail.core.signals import page_published
 
 
 class Deployment(models.Model):

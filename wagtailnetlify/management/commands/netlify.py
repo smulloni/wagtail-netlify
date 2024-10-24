@@ -7,7 +7,7 @@ from wagtailnetlify.models import Deployment
 
 try:
     from wagtail.contrib.redirects.models import Redirect
-except ImportError:  # Wagtail < 2.0
+except ImportError:  # Wagtail < 5.0
     from wagtail.wagtailredirects.models import Redirect
 
 
@@ -28,8 +28,8 @@ class Command(BaseCommand):
     help = "Deploys your baked Wagtail site to Netlify"
 
     def write_redirects(self):
-        """ Redirects are configured in a file called '_redirects'
-            at the root of the build directory
+        """Redirects are configured in a file called '_redirects'
+        at the root of the build directory
         """
         if not hasattr(settings, "BUILD_DIR"):
             raise CommandError("BUILD_DIR is not defined in settings")
@@ -81,14 +81,13 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "-n", "--no-deploy",
-            action="store_true",
-            help="Do not deploy"
+            "-n", "--no-deploy", action="store_true", help="Do not deploy"
         )
         parser.add_argument(
-            "-t", "--trigger-build",
+            "-t",
+            "--trigger-build",
             action="store_true",
-            help="Trigger build on Netlify"
+            help="Trigger build on Netlify",
         )
 
     def handle(self, *args, **kwargs):
