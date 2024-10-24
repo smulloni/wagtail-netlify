@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ...
 
+## v0.7.1
+
+### Added
+
+- Support for Wagtail 5.0
+
+###
+
+- Support for Wagtail < 2.0
+
 ## v0.7
 
 ### Added
